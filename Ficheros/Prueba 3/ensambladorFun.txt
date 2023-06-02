@@ -1,0 +1,47 @@
+Etmodificar:
+ADD .IX, #1
+MOVE .A, .R1
+ININT[.R1]
+ADD .IX, #2
+MOVE #0, [.A]
+ADD .IX, #1
+MOVE [.A], .R0
+ADD .IX, #2
+CMP .R0, [.A]
+BN /etiq5
+ADD .IX, #3
+MOVE #0, [.A]
+BR /etiq6
+etiq5:
+ADD .IX, #3
+MOVE #1, [.A]
+etiq6:
+ADD .IX, #3
+CMP [.A], #0
+BZ /etiq7
+ADD .IX, #4
+MOVE #0, [.A]
+ADD .IX, #4
+MOVE [.A], .R0
+ADD .IY, #66
+MOVE .R0, [.A]
+etiq7:
+BR [.IX]
+EtesCierto:
+ADD .IX, #1
+MOVE #1, [.A]
+SUB #TAM_RA_EtesCierto, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #1, .IX
+MOVE [.A], [.R9]
+BR [.IX]
+EtnoEsCierto:
+ADD .IX, #1
+MOVE #0, [.A]
+SUB #TAM_RA_EtnoEsCierto, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #1, .IX
+MOVE [.A], [.R9]
+BR [.IX]

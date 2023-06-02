@@ -1,0 +1,68 @@
+ORG 0
+MOVE #PILA, .IX
+MOVE .IX, .SP
+MOVE #DE, .IY
+BR /main
+Etsaludo:
+ADD .IX, #1
+MOVE .A, .R1
+WRSTR [.R1]
+BR [.IX]
+main: NOP
+ADD .IY, #65
+MOVE #cad1, [.A]
+ADD .IY, #65
+MOVE [.A], .R7
+ADD .IY, #0
+MOVE .A, .R6
+etiq1:
+CMP [.R7], #0
+BZ /etiq2
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq1
+etiq2:
+MOVE [.R7], [.R6]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #0, .IY
+MOVE .A, .R7
+MOVE .R0, .R6
+etiq3:
+CMP [.R7], #0
+BZ /etiq4
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq3
+etiq4:
+MOVE [.R7], [.R6]
+MOVE #dir_ret1, #0[.IX]
+BR /Etsaludo
+dir_ret1:
+ADD .IY, #0
+MOVE .A, .R7
+ADD .IY, #130
+MOVE .A, .R6
+etiq5:
+CMP [.R7], #0
+BZ /etiq6
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq5
+etiq6:
+MOVE [.R7], [.R6]
+ADD .IY, #130
+MOVE .A, .R1
+WRSTR [.R1]
+HALT
+TAM_RA_main: EQU 195
+TAM_RA_Etsaludo: EQU 66
+cad1:
+DATA "Alex"
+DE: RES 195
+PILA: NOP
+END

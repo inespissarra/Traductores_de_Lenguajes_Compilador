@@ -1,0 +1,5 @@
+Etsaludo:
+ADD .IX, #1
+MOVE .A, .R1
+WRSTR [.R1]
+BR [.IX]

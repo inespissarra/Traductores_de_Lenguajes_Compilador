@@ -1,0 +1,438 @@
+ORG 0
+MOVE #PILA, .IX
+MOVE .IX, .SP
+MOVE #DE, .IY
+BR /main
+Etimprime:
+ADD .IX, #1
+MOVE .A, .R1
+WRINT [.R1]
+ADD .IX, #3
+MOVE #cad1, [.A]
+ADD .IX, #3
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IX, #68
+MOVE #0, [.A]
+ADD .IX, #68
+MOVE [.A], .R0
+ADD .IX, #2
+CMP .R0, [.A]
+BN /etiq1
+ADD .IX, #69
+MOVE #0, [.A]
+BR /etiq2
+etiq1:
+ADD .IX, #69
+MOVE #1, [.A]
+etiq2:
+ADD .IX, #69
+CMP [.A], #0
+BZ /etiq3
+ADD .IX, #2
+MOVE .A, .R1
+WRINT [.R1]
+etiq3:
+ADD .IX, #70
+MOVE #cad2, [.A]
+ADD .IX, #70
+MOVE [.A], .R1
+WRSTR [.R1]
+BR [.IX]
+Etsent:
+ADD .IX, #1
+MOVE .A, .R7
+ADD .IX, #66
+MOVE .A, .R6
+etiq6:
+CMP [.R7], #0
+BZ /etiq7
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq6
+etiq7:
+MOVE [.R7], [.R6]
+ADD .IY, #0
+MOVE [.A], .R0
+ADD .IX, #131
+MOVE .R0, [.A]
+ADD .IX, #131
+MOVE [.A], .R0
+ADD .IY, #132
+MOVE .R0, [.A]
+ADD .IX, #132
+MOVE #1, [.A]
+ADD .IX, #132
+MOVE [.A], .R0
+ADD .IY, #133
+MOVE .R0, [.A]
+ADD .IX, #134
+MOVE #33, [.A]
+ADD .IX, #134
+MOVE [.A], .R0
+ADD .IX, #133
+MOVE .R0, [.A]
+ADD .IX, #66
+MOVE .A, .R1
+INSTR [.R1]
+ADD .IX, #66
+MOVE .A, .R7
+ADD .IY, #2
+MOVE .A, .R6
+etiq8:
+CMP [.R7], #0
+BZ /etiq9
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq8
+etiq9:
+MOVE [.R7], [.R6]
+ADD .IX, #1
+MOVE .A, .R1
+WRSTR [.R1]
+ADD .IY, #2
+MOVE .A, .R1
+WRSTR [.R1]
+etiq10:
+ADD .IX, #131
+MOVE [.A], .R0
+ADD .IX, #133
+CMP .R0, [.A]
+BN /etiq12
+ADD .IX, #135
+MOVE #0, [.A]
+BR /etiq13
+etiq12:
+ADD .IX, #135
+MOVE #1, [.A]
+etiq13:
+ADD .IX, #136
+MOVE .A, .R1
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IX, #135
+AND [.A], .R0
+MOVE .A, [.R1]
+ADD .IX, #136
+CMP [.A], #0
+BZ /etiq11
+ADD .IY, #1
+CMP [.A], #0
+BZ /etiq14
+ADD .IX, #137
+MOVE #0, [.A]
+ADD #TAM_RA_Etsent, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #131, .IX
+MOVE [.A], [.R0]
+ADD #TAM_RA_Etsent, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #137, .IX
+MOVE [.A], [.R0]
+ADD #TAM_RA_Etsent, .IX
+MOVE #dir_ret1, [.A]
+ADD #TAM_RA_Etsent, .IX
+MOVE .A, .IX
+BR /Etimprime
+dir_ret1:
+SUB .IX, #TAM_RA_Etsent
+MOVE .A, .IX
+etiq14:
+ADD .IX, #138
+MOVE #2, [.A]
+ADD .IY, #133
+MOVE [.A], .R0
+ADD .IX, #138
+MOD .R0, [.A]
+MOVE .A, .R1
+ADD .IY, #133
+MOVE .R1, [.A]
+ADD .IX, #131
+MOVE [.A], .R0
+ADD .IY, #133
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #139
+MOVE .R1, [.A]
+ADD .IX, #139
+MOVE [.A], .R0
+ADD .IX, #131
+MOVE .R0, [.A]
+BR /etiq10
+etiq11:
+SUB #TAM_RA_Etsent, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #132, .IY
+MOVE [.A], [.R9]
+BR [.IX]
+EtRecursivo:
+ADD .IX, #3
+MOVE #11, [.A]
+ADD .IY, #0
+MOVE [.A], .R0
+ADD .IX, #3
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #4
+MOVE .R1, [.A]
+ADD .IX, #4
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #1, .IX
+MOVE [.A], [.R0]
+ADD #TAM_RA_EtRecursivo, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #0, .IY
+MOVE [.A], [.R0]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE #dir_ret2, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE .A, .IX
+BR /Etimprime
+dir_ret2:
+SUB .IX, #TAM_RA_EtRecursivo
+MOVE .A, .IX
+ADD .IX, #5
+MOVE #1, [.A]
+ADD .IX, #5
+MOVE [.A], .R0
+ADD .IX, #1
+CMP .R0, [.A]
+BN /etiq15
+ADD .IX, #6
+MOVE #0, [.A]
+BR /etiq16
+etiq15:
+ADD .IX, #6
+MOVE #1, [.A]
+etiq16:
+ADD .IX, #6
+CMP [.A], #0
+BZ /etiq17
+ADD .IX, #7
+MOVE #1, [.A]
+SUB #TAM_RA_EtRecursivo, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #7, .IX
+MOVE [.A], [.R9]
+BR [.IX]
+etiq17:
+ADD .IX, #1
+MOVE [.A], .R0
+ADD .IY, #133
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #8
+MOVE .R1, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #8, .IX
+MOVE [.A], [.R0]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE #dir_ret3, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE .A, .IX
+BR /EtRecursivo
+dir_ret3:
+SUB #TAM_RA_EtRecursivo, #1
+ADD .A, .IX
+MOVE .A, .R9
+SUB .IX, #TAM_RA_EtRecursivo
+MOVE .A, .IX
+ADD #9, .IX
+MOVE [.R9], [.A]
+ADD .IX, #1
+MOVE [.A], .R0
+ADD .IX, #9
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #10
+MOVE .R1, [.A]
+ADD .IX, #10
+MOVE [.A], .R0
+ADD .IX, #2
+MOVE .R0, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #1, .IX
+MOVE [.A], [.R0]
+ADD #TAM_RA_EtRecursivo, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #0, .IY
+MOVE [.A], [.R0]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE #dir_ret4, [.A]
+ADD #TAM_RA_EtRecursivo, .IX
+MOVE .A, .IX
+BR /Etimprime
+dir_ret4:
+SUB .IX, #TAM_RA_EtRecursivo
+MOVE .A, .IX
+SUB #TAM_RA_EtRecursivo, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #2, .IX
+MOVE [.A], [.R9]
+BR [.IX]
+main: NOP
+ADD .IY, #67
+MOVE #cad3, [.A]
+ADD .IY, #67
+MOVE [.A], .R7
+ADD .IY, #2
+MOVE .A, .R6
+etiq4:
+CMP [.R7], #0
+BZ /etiq5
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq4
+etiq5:
+MOVE [.R7], [.R6]
+ADD .IY, #134
+MOVE #0, [.A]
+ADD .IY, #135
+MOVE #5, [.A]
+ADD .IY, #134
+MOVE [.A], .R0
+ADD .IY, #135
+CMP .R0, [.A]
+BN /etiq18
+ADD .IY, #136
+MOVE #0, [.A]
+BR /etiq19
+etiq18:
+ADD .IY, #136
+MOVE #1, [.A]
+etiq19:
+ADD .IY, #136
+MOVE [.A], .R0
+ADD .IY, #1
+MOVE .R0, [.A]
+ADD .IY, #2
+MOVE .A, .R1
+WRSTR [.R1]
+ADD .IY, #0
+MOVE .A, .R1
+ININT[.R1]
+ADD .IY, #137
+MOVE #cad4, [.A]
+ADD .IY, #137
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #202
+MOVE #cad5, [.A]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #202, .IY
+MOVE [.A], .A
+MOVE .A, .R7
+MOVE .R0, .R6
+etiq20:
+CMP [.R7], #0
+BZ /etiq21
+MOVE [.R7], [.R6]
+INC .R6
+INC .R7
+BR /etiq20
+etiq21:
+MOVE [.R7], [.R6]
+MOVE #dir_ret5, #0[.IX]
+BR /Etsent
+dir_ret5:
+SUB #TAM_RA_Etsent, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #267, .IY
+MOVE [.R9], [.A]
+ADD .IY, #268
+MOVE #0, [.A]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #267, .IY
+MOVE [.A], [.R0]
+ADD #0, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #268, .IY
+MOVE [.A], [.R0]
+MOVE #dir_ret6, #0[.IX]
+BR /Etimprime
+dir_ret6:
+ADD .IY, #269
+MOVE #11, [.A]
+ADD .IY, #269
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #132, .IY
+MOVE [.A], [.R0]
+MOVE #dir_ret7, #0[.IX]
+BR /EtRecursivo
+dir_ret7:
+SUB #TAM_RA_EtRecursivo, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #270, .IY
+MOVE [.R9], [.A]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #270, .IY
+MOVE [.A], [.R0]
+ADD #0, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #0, .IY
+MOVE [.A], [.R0]
+MOVE #dir_ret8, #0[.IX]
+BR /Etimprime
+dir_ret8:
+ADD .IY, #271
+MOVE #cad6, [.A]
+ADD .IY, #271
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #2
+MOVE .A, .R1
+WRSTR [.R1]
+HALT
+TAM_RA_main: EQU 336
+TAM_RA_Etsent: EQU 141
+TAM_RA_Etimprime: EQU 135
+TAM_RA_EtRecursivo: EQU 12
+cad4:
+DATA "Escribe tu nombre. "
+cad5:
+DATA "Hola, "
+cad2:
+DATA ". "
+cad3:
+DATA "introduce un digito. "
+cad1:
+DATA " #"
+cad6:
+DATA "Adios, "
+DE: RES 336
+PILA: NOP
+END

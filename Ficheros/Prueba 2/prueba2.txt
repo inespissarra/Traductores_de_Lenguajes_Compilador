@@ -1,0 +1,21 @@
+/* Programa de ejemplo 2 */
+
+let string nombre;
+
+function saludo () {
+    input(nombre);
+    print('Hola ');
+    print(nombre); 
+}
+
+let int a; 
+input(a); 
+while(a < 10) {
+    print('Numero muy bajo');
+    input(a); 
+}
+
+if(a < 11) 
+    print('Bien hecho!');
+
+saludo();

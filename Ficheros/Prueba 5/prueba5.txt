@@ -1,0 +1,15 @@
+/* Programa de ejemplo 5 */
+
+let boolean stop;
+stop = false;
+function Sumar int(int a, int b) {
+    return a+b;
+}
+
+let int sumando;
+sumando = Sumar(4, 5);
+if(sumando < 10)
+stop = true;
+
+if(stop)
+print('Resultado menor a 10');

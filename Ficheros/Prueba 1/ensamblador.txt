@@ -1,0 +1,112 @@
+ORG 0
+MOVE #PILA, .IX
+MOVE .IX, .SP
+MOVE #DE, .IY
+BR /main
+Ethola:
+ADD .IX, #1
+MOVE #cad1, [.A]
+ADD .IX, #1
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #1
+MOVE .A, .R1
+WRINT [.R1]
+BR [.IX]
+main: NOP
+ADD .IY, #2
+MOVE #1, [.A]
+ADD .IY, #2
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD .IY, #3
+MOVE #10, [.A]
+ADD .IY, #3
+MOVE [.A], .R0
+ADD .IY, #1
+MOVE .R0, [.A]
+etiq1:
+ADD .IY, #4
+MOVE #20, [.A]
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IY, #4
+CMP .R0, [.A]
+BN /etiq3
+ADD .IY, #5
+MOVE #0, [.A]
+BR /etiq4
+etiq3:
+ADD .IY, #5
+MOVE #1, [.A]
+etiq4:
+ADD .IY, #6
+MOVE .A, .R1
+ADD .IY, #5
+MOVE [.A], .R0
+ADD .IY, #0
+AND [.A], .R0
+MOVE .A, [.R1]
+ADD .IY, #6
+CMP [.A], #0
+BZ /etiq2
+ADD .IY, #7
+MOVE #2, [.A]
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IY, #7
+MOD .R0, [.A]
+MOVE .A, .R1
+ADD .IY, #1
+MOVE .R1, [.A]
+ADD .IY, #8
+MOVE #3, [.A]
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IY, #8
+CMP .R0, [.A]
+BN /etiq5
+ADD .IY, #9
+MOVE #0, [.A]
+BR /etiq6
+etiq5:
+ADD .IY, #9
+MOVE #1, [.A]
+etiq6:
+ADD .IY, #9
+CMP [.A], #0
+BZ /etiq7
+ADD .IY, #10
+MOVE #0, [.A]
+ADD .IY, #10
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+etiq7:
+ADD .IY, #11
+MOVE #1, [.A]
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IY, #11
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IY, #12
+MOVE .R1, [.A]
+ADD .IY, #12
+MOVE [.A], .R0
+ADD .IY, #1
+MOVE .R0, [.A]
+BR /etiq1
+etiq2:
+MOVE #dir_ret1, #0[.IX]
+BR /Ethola
+dir_ret1:
+HALT
+TAM_RA_main: EQU 13
+TAM_RA_Ethola: EQU 66
+cad1:
+DATA "Hola Mundo!"
+DE: RES 13
+PILA: NOP
+END

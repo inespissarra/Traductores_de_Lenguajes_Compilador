@@ -1,0 +1,11 @@
+/* Programa de ejemplo 4 */
+
+let string nombre;
+function saludo (string x) {
+    print(x);
+}
+nombre='Alex';
+saludo(nombre);
+let string nombre2;
+nombre2=nombre;
+print(nombre2);

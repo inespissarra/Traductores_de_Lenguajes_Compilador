@@ -1,0 +1,93 @@
+ORG 0
+MOVE #PILA, .IX
+MOVE .IX, .SP
+MOVE #DE, .IY
+BR /main
+EtSumar:
+ADD .IX, #1
+MOVE [.A], .R0
+ADD .IX, #2
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #3
+MOVE .R1, [.A]
+SUB #TAM_RA_EtSumar, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #3, .IX
+MOVE [.A], [.R9]
+BR [.IX]
+main: NOP
+ADD .IY, #1
+MOVE #0, [.A]
+ADD .IY, #1
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD .IY, #3
+MOVE #4, [.A]
+ADD .IY, #4
+MOVE #5, [.A]
+ADD #0, .IX
+ADD #1, .A
+MOVE .A, .R0
+ADD #3, .IY
+MOVE [.A], [.R0]
+ADD #0, .IX
+ADD #2, .A
+MOVE .A, .R0
+ADD #4, .IY
+MOVE [.A], [.R0]
+MOVE #dir_ret1, #0[.IX]
+BR /EtSumar
+dir_ret1:
+SUB #TAM_RA_EtSumar, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #5, .IY
+MOVE [.R9], [.A]
+ADD .IY, #5
+MOVE [.A], .R0
+ADD .IY, #2
+MOVE .R0, [.A]
+ADD .IY, #6
+MOVE #10, [.A]
+ADD .IY, #2
+MOVE [.A], .R0
+ADD .IY, #6
+CMP .R0, [.A]
+BN /etiq1
+ADD .IY, #7
+MOVE #0, [.A]
+BR /etiq2
+etiq1:
+ADD .IY, #7
+MOVE #1, [.A]
+etiq2:
+ADD .IY, #7
+CMP [.A], #0
+BZ /etiq3
+ADD .IY, #8
+MOVE #1, [.A]
+ADD .IY, #8
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+etiq3:
+ADD .IY, #0
+CMP [.A], #0
+BZ /etiq4
+ADD .IY, #9
+MOVE #cad1, [.A]
+ADD .IY, #9
+MOVE [.A], .R1
+WRSTR [.R1]
+etiq4:
+HALT
+TAM_RA_main: EQU 74
+TAM_RA_EtSumar: EQU 5
+cad1:
+DATA "Resultado menor a 10"
+DE: RES 74
+PILA: NOP
+END

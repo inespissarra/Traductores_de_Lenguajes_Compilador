@@ -1,0 +1,10 @@
+Ethola:
+ADD .IX, #1
+MOVE #cad1, [.A]
+ADD .IX, #1
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #1
+MOVE .A, .R1
+WRINT [.R1]
+BR [.IX]

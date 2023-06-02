@@ -1,0 +1,30 @@
+/* Programa de ejemplo 3 */
+
+let int numero;
+let string palabra; 
+let boolean cierto;
+
+numero = 0;
+cierto = true;
+
+while (cierto && numero < 10) {
+    numero = numero + 1;
+    print('Iteracion producida'); 
+}
+
+/* Funcion 1 */ 
+function modificar () {
+    let int n; input(n); 
+    if (n < 0)
+    cierto = false;
+}
+
+/* Funcion 2 */
+function esCierto boolean () {
+    return true; 
+}
+
+/* Funcion 3 */
+function noEsCierto boolean () {
+    return false; 
+}

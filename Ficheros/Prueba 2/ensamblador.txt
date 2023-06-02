@@ -1,0 +1,88 @@
+ORG 0
+MOVE #PILA, .IX
+MOVE .IX, .SP
+MOVE #DE, .IY
+BR /main
+Etsaludo:
+ADD .IY, #0
+MOVE .A, .R1
+INSTR [.R1]
+ADD .IX, #1
+MOVE #cad1, [.A]
+ADD .IX, #1
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #0
+MOVE .A, .R1
+WRSTR [.R1]
+BR [.IX]
+main: NOP
+ADD .IY, #65
+MOVE .A, .R1
+ININT[.R1]
+etiq1:
+ADD .IY, #66
+MOVE #10, [.A]
+ADD .IY, #65
+MOVE [.A], .R0
+ADD .IY, #66
+CMP .R0, [.A]
+BN /etiq3
+ADD .IY, #67
+MOVE #0, [.A]
+BR /etiq4
+etiq3:
+ADD .IY, #67
+MOVE #1, [.A]
+etiq4:
+ADD .IY, #67
+CMP [.A], #0
+BZ /etiq2
+ADD .IY, #68
+MOVE #cad2, [.A]
+ADD .IY, #68
+MOVE [.A], .R1
+WRSTR [.R1]
+ADD .IY, #65
+MOVE .A, .R1
+ININT[.R1]
+BR /etiq1
+etiq2:
+ADD .IY, #133
+MOVE #11, [.A]
+ADD .IY, #65
+MOVE [.A], .R0
+ADD .IY, #133
+CMP .R0, [.A]
+BN /etiq5
+ADD .IY, #134
+MOVE #0, [.A]
+BR /etiq6
+etiq5:
+ADD .IY, #134
+MOVE #1, [.A]
+etiq6:
+ADD .IY, #134
+CMP [.A], #0
+BZ /etiq7
+ADD .IY, #135
+MOVE #cad3, [.A]
+ADD .IY, #135
+MOVE [.A], .R1
+WRSTR [.R1]
+etiq7:
+MOVE #dir_ret1, #0[.IX]
+BR /Etsaludo
+dir_ret1:
+HALT
+TAM_RA_main: EQU 200
+TAM_RA_Etsaludo: EQU 66
+cad2:
+DATA "Numero muy bajo"
+cad3:
+DATA "Bien hecho!"
+cad1:
+DATA "Hola "
+DE: RES 200
+PILA: NOP
+END

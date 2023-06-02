@@ -1,0 +1,57 @@
+ADD .IY, #67
+MOVE #0, [.A]
+ADD .IY, #67
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD .IY, #68
+MOVE #1, [.A]
+ADD .IY, #68
+MOVE [.A], .R0
+ADD .IY, #66
+MOVE .R0, [.A]
+etiq1:
+ADD .IY, #69
+MOVE #10, [.A]
+ADD .IY, #0
+MOVE [.A], .R0
+ADD .IY, #69
+CMP .R0, [.A]
+BN /etiq3
+ADD .IY, #70
+MOVE #0, [.A]
+BR /etiq4
+etiq3:
+ADD .IY, #70
+MOVE #1, [.A]
+etiq4:
+ADD .IY, #71
+MOVE .A, .R1
+ADD .IY, #66
+MOVE [.A], .R0
+ADD .IY, #70
+AND [.A], .R0
+MOVE .A, [.R1]
+ADD .IY, #71
+CMP [.A], #0
+BZ /etiq2
+ADD .IY, #72
+MOVE #1, [.A]
+ADD .IY, #0
+MOVE [.A], .R0
+ADD .IY, #72
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IY, #73
+MOVE .R1, [.A]
+ADD .IY, #73
+MOVE [.A], .R0
+ADD .IY, #0
+MOVE .R0, [.A]
+ADD .IY, #74
+MOVE #cad1, [.A]
+ADD .IY, #74
+MOVE [.A], .R1
+WRSTR [.R1]
+BR /etiq1
+etiq2:

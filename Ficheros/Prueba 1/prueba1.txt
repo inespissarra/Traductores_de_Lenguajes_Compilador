@@ -1,0 +1,19 @@
+/* Programa de ejemplo 1 */
+
+let boolean pasa;
+let int num;
+
+function hola () { 
+    print('Hola Mundo!');
+    print(num);
+}
+
+pasa = true;
+num = 10;
+while (num < 20 && pasa) {
+    num %= 2;
+    if (num < 3) 
+    pasa = false; 
+    num = num + 1;
+}
+hola();

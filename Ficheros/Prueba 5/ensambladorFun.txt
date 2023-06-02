@@ -1,0 +1,14 @@
+EtSumar:
+ADD .IX, #1
+MOVE [.A], .R0
+ADD .IX, #2
+ADD [.A], .R0
+MOVE .A, .R1
+ADD .IX, #3
+MOVE .R1, [.A]
+SUB #TAM_RA_EtSumar, #1
+ADD .A, .IX
+MOVE .A, .R9
+ADD #3, .IX
+MOVE [.A], [.R9]
+BR [.IX]
