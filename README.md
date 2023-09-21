@@ -1,4 +1,5 @@
 # Práctica TdL
+Prática en grupo de la asignatura de Traductores de Lenguajes en ETSIINF (año 2022/2023).
 
 ## Integrantes del Grupo:
 
