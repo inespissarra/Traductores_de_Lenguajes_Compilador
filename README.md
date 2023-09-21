@@ -5,7 +5,7 @@
 - Alex Calvo Vergara
 - Inês de Almeida Pissarra
 
-## Califocación
+## Calificación
 Nota 10/10
 
 ## Árbol de directorios:
