@@ -5,6 +5,9 @@
 - Alex Calvo Vergara
 - Inês de Almeida Pissarra
 
+## Califocación
+Nota 10/10
+
 ## Árbol de directorios:
 ```
 Raíz
